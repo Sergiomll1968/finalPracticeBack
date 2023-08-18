@@ -3,9 +3,8 @@ import productModel from './products.model.js';
 export async function getAll(req, res) {
   const qNew = req.query.new;
   const qCategory = req.query.category;
+  let products;
   try {
-    let products;
-
     if (qNew) {
       products = await productModel.find().sort({ createdAt: -1 }).limit(1);
     } else if (qCategory) {
@@ -17,11 +16,10 @@ export async function getAll(req, res) {
     } else {
       products = await productModel.find();
     }
-
-    res.status(200).json(products);
   } catch (err) {
     res.status(500).json(err);
   }
+  return products;
 }
 
 export async function getById({ id }) {
