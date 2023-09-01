@@ -14,7 +14,7 @@ function middleware(req, res, next) {
     '/users/changepassword',
     '/confirm',
     '/products',
-    'payments',
+    '/payments',
   ];
 
   const requestUrl = req.url;
